@@ -1,0 +1,13 @@
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\bin\Debug\Client.exe.config
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\bin\Debug\Client.exe
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\bin\Debug\Client.pdb
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\bin\Debug\Interfaces.dll
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\bin\Debug\ServiceManager.exe
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\bin\Debug\Interfaces.pdb
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\bin\Debug\ServiceManager.pdb
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\bin\Debug\ServiceManager.exe.config
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.exe
+C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.pdb

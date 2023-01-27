@@ -1,0 +1,10 @@
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.AssemblyReference.cache
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.CoreCompileInputs.cache
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\bin\Debug\ServiceManager.exe.config
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\bin\Debug\ServiceManager.exe
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\bin\Debug\ServiceManager.pdb
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\bin\Debug\Interfaces.dll
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\bin\Debug\Interfaces.pdb
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.CopyComplete
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\obj\Debug\ServiceManager.exe
+C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\obj\Debug\ServiceManager.pdb
