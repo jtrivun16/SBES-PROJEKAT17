@@ -25,5 +25,5 @@ namespace SecurityManager
             return isInRole;
         }
     }
-    }
+    
 }

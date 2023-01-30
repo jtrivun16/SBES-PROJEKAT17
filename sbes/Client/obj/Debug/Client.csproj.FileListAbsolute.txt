@@ -24,3 +24,7 @@ C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.cspro
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.csproj.CopyComplete
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.exe
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Common.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\SecurityManager.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Common.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\SecurityManager.pdb

@@ -18,3 +18,7 @@ C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\Serv
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.CopyComplete
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.exe
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\Common.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\SecurityManager.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\Common.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\SecurityManager.pdb
