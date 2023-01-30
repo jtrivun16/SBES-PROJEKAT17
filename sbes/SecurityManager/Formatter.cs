@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SecurityManager
 {
-    class Formatter
+    public class Formatter
     {
         /// <summary>
         /// Returns username based on the Windows Logon Name. 

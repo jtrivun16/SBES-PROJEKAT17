@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SecurityManager;
 
 namespace ServiceManager
 {
@@ -19,8 +19,8 @@ namespace ServiceManager
 
         public bool Connect(byte[] encryptedSessionKey)
         {
-            //CustomPrincipal principal = Thread.CurrentPrincipal as CustomPrincipal;
-            //string userName = Formatter.ParseName(principal.Identity.Name);
+            CustomPrincipal principal = Thread.CurrentPrincipal as CustomPrincipal;
+            string userName = Formatter.ParseName(principal.Identity.Name);
 
             //if (Thread.CurrentPrincipal.IsInRole("ExchangeSessionKey"))
             //{
