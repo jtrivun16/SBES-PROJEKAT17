@@ -41,12 +41,25 @@ namespace Client
 
         public bool RunService(byte[] ip, byte[] port, byte[] protocol)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return factory.RunService(ip, port, protocol);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+                return false;
+            }
         }
 
         public bool StopService(byte[] ip, byte[] port, byte[] protocol)
         {
             throw new NotImplementedException();
+        }
+
+        public void TestConnection()
+        {
+            Console.WriteLine("[ CONNECTION WORKING ] This is a test message.\n");
         }
     }
 }

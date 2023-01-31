@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace SecurityManager
 {
-    class CustomAuthorizatioPolicy : IAuthorizationPolicy
+    public class CustomAuthorizationPolicy : IAuthorizationPolicy
     {
-        public CustomAuthorizatioPolicy()
+        public CustomAuthorizationPolicy()
         {
             Id = Guid.NewGuid().ToString();
         }

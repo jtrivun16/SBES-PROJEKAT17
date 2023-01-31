@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SecurityManager
 {
-    class CustomAuthorizationManager : ServiceAuthorizationManager
+    public class CustomAuthorizationManager : ServiceAuthorizationManager
     {
         protected override bool CheckAccessCore(OperationContext operationContext)
         {
