@@ -13,30 +13,40 @@ namespace Client
     {
         IServiceManager factory;
 
-        public ClientProxy(Binding binding, string remoteAddress) : base(binding, remoteAddress)
+        public ClientProxy(Binding binding, EndpointAddress remoteAddress) : base(binding, remoteAddress)
         {
             factory = this.CreateChannel();
         }
 
-        public bool Connect(byte[] encryptedSessionKey)
+        public void AddItemToBlackList(string type, string value)
         {
-            bool connected = false;
+            throw new NotImplementedException();
+        }
+
+        public byte[] Connect(byte[] publicKey, byte[] iv)
+        {
+            byte[] serverPublicKey = null;
             try
             {
-                connected = factory.Connect(encryptedSessionKey);
-
-            }
-            catch (FaultException<SecurityException> sec)
-            {
-                Console.WriteLine(sec.Message);
-
+                serverPublicKey = factory.Connect(publicKey, iv);
+                Console.WriteLine("Connect allowed!\n");
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error: {0}", e.Message);
             }
-            return connected;
+
+            return serverPublicKey;
         }
 
+        public bool RunService(byte[] ip, byte[] port, byte[] protocol)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool StopService(byte[] ip, byte[] port, byte[] protocol)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

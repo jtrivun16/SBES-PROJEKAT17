@@ -11,3 +11,20 @@ C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.csproj.CoreC
 C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.csproj.CopyComplete
 C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.exe
 C:\Users\Srdjan Lazarevic\source\repos\sbes\Client\obj\Debug\Client.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Client.exe.config
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Client.exe
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Client.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Interfaces.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\ServiceManager.exe
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Interfaces.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\ServiceManager.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\ServiceManager.exe.config
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.exe
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\obj\Debug\Client.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Common.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\SecurityManager.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\Common.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Client\bin\Debug\SecurityManager.pdb

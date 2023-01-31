@@ -4,3 +4,9 @@ C:\Users\Srdjan Lazarevic\source\repos\sbes\Interfaces\obj\Debug\Interfaces.cspr
 C:\Users\Srdjan Lazarevic\source\repos\sbes\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
 C:\Users\Srdjan Lazarevic\source\repos\sbes\Interfaces\obj\Debug\Interfaces.dll
 C:\Users\Srdjan Lazarevic\source\repos\sbes\Interfaces\obj\Debug\Interfaces.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Interfaces\bin\Debug\Interfaces.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Interfaces\bin\Debug\Interfaces.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Interfaces\obj\Debug\Interfaces.csproj.AssemblyReference.cache
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Interfaces\obj\Debug\Interfaces.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\Interfaces\obj\Debug\Interfaces.pdb

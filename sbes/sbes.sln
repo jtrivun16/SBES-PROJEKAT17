@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{5AA9D338-99F0-4E11-84E1-0CECCFB4293C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityManager", "SecurityManager\SecurityManager.csproj", "{BF6A5629-829D-459C-ADAA-D5AB79DDE9F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{ADE86F8B-BE98-4CBB-ABFF-D1B73A729364}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{5AA9D338-99F0-4E11-84E1-0CECCFB4293C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AA9D338-99F0-4E11-84E1-0CECCFB4293C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AA9D338-99F0-4E11-84E1-0CECCFB4293C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF6A5629-829D-459C-ADAA-D5AB79DDE9F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6A5629-829D-459C-ADAA-D5AB79DDE9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6A5629-829D-459C-ADAA-D5AB79DDE9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6A5629-829D-459C-ADAA-D5AB79DDE9F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE86F8B-BE98-4CBB-ABFF-D1B73A729364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE86F8B-BE98-4CBB-ABFF-D1B73A729364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE86F8B-BE98-4CBB-ABFF-D1B73A729364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE86F8B-BE98-4CBB-ABFF-D1B73A729364}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

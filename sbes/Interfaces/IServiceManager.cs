@@ -12,7 +12,16 @@ namespace Interfaces
     {
         [OperationContract]
         //[FaultContract(typeof(SecurityException))]
-        bool Connect(byte[] encryptedSessionKey);
+        byte[] Connect(byte[] publicKey, byte[] iv);
+
+        [OperationContract]
+        bool RunService(byte[] ip, byte[] port, byte[] protocol);
+
+        [OperationContract]
+        bool StopService(byte[] ip, byte[] port, byte[] protocol);
+
+        [OperationContract]
+        void AddItemToBlackList(string type, string value);
 
 
     }
