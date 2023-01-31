@@ -54,7 +54,15 @@ namespace Client
 
         public bool StopService(byte[] ip, byte[] port, byte[] protocol)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return factory.StopService(ip, port, protocol);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+                return false;
+            }
         }
 
         public void TestConnection()

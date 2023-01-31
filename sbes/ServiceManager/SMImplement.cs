@@ -101,9 +101,9 @@ namespace ServiceManager
             if (decryptedIp.ToLower().Equals("localhost"))
                 decryptedIp = "127.0.0.1";
 
-            string address = $"{decryptedProtocol}://{decryptedIp}:{decryptedPort}/TestService";
+            string address = $"{decryptedProtocol}://{decryptedIp}:{decryptedPort}/SMImplement";
 
-
+            
             if (hosts.ContainsKey(address))
             {
                 hosts[address].Close();
