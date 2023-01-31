@@ -8,17 +8,17 @@ C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\bin\Debug\Interfaces.
 C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.CopyComplete
 C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\obj\Debug\ServiceManager.exe
 C:\Users\Srdjan Lazarevic\source\repos\sbes\ServiceManager\obj\Debug\ServiceManager.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.AssemblyReference.cache
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.CoreCompileInputs.cache
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\ServiceManager.exe.config
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\ServiceManager.exe
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\ServiceManager.pdb
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\Common.dll
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\Interfaces.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\SecurityManager.dll
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\Common.pdb
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\Interfaces.pdb
-C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.AssemblyReference.cache
-C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.CoreCompileInputs.cache
+C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\SecurityManager.pdb
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.csproj.CopyComplete
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.exe
 C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\obj\Debug\ServiceManager.pdb
-C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\Common.dll
-C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\SecurityManager.dll
-C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\Common.pdb
-C:\Users\Ema\OneDrive\Desktop\SBES-PROJEKAT17\sbes\ServiceManager\bin\Debug\SecurityManager.pdb
