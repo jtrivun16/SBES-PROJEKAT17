@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Modifier" xml:space="preserve">
-    <value>ExcangeSessionKey,RunService,Modify</value>
+  <data name="adminClient" xml:space="preserve">
+    <value>ExchangeSessionKey,RunService,Modify</value>
   </data>
-  <data name="WcfClient" xml:space="preserve">
-    <value>ExcangeSessionKey,RunService</value>
+  <data name="audit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="client" xml:space="preserve">
+    <value>ExchangeSessionKey,RunService</value>
+  </data>
+  <data name="serviceManager" xml:space="preserve">
+    <value />
   </data>
 </root>

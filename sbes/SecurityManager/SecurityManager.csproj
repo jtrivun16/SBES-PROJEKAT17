@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomAuthorizationManager.cs" />
-    <Compile Include="CustomAuthorizatioPolicy.cs" />
+    <Compile Include="CustomAuthorizationPolicy.cs" />
     <Compile Include="CustomPrincipal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolesConfig.cs" />
