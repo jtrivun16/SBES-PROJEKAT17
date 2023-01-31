@@ -89,8 +89,30 @@ namespace ServiceManager
         [PrincipalPermission(SecurityAction.Demand, Role = "RunService")]
         public bool StopService(byte[] ip, byte[] port, byte[] protocol)
         {
-            Console.WriteLine("STOp");
-            return true;
+            string decryptedIp = excangeKey.Decrypt(ClientPublicKey, ip, ClientIV);
+            string decryptedPort = excangeKey.Decrypt(ClientPublicKey, port, ClientIV);
+            string decryptedProtocol = excangeKey.Decrypt(ClientPublicKey, protocol, ClientIV);
+
+            if (decryptedProtocol.ToLower().Equals("tcp"))
+                decryptedProtocol = "net.tcp";
+            else
+                return false;
+
+            if (decryptedIp.ToLower().Equals("localhost"))
+                decryptedIp = "127.0.0.1";
+
+            string address = $"{decryptedProtocol}://{decryptedIp}:{decryptedPort}/TestService";
+
+
+            if (hosts.ContainsKey(address))
+            {
+                hosts[address].Close();
+                hosts.Remove(address);
+                Console.WriteLine("Service stopped on port " + decryptedPort);
+                return true;
+            }
+
+            return false;
         }
 
         public void TestConnection()
