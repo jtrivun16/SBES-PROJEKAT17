@@ -79,7 +79,7 @@ namespace SecurityManager {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RunService.
+        ///   Looks up a localized string similar to RunService,ExchangeSessionKey.
         /// </summary>
         internal static string RunService {
             get {
