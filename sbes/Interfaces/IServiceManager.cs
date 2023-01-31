@@ -23,6 +23,9 @@ namespace Interfaces
         [OperationContract]
         void AddItemToBlackList(string type, string value);
 
+        [OperationContract]
+        void TestConnection();
+
 
     }
 }

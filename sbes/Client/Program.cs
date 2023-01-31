@@ -88,6 +88,22 @@ namespace Client
                                     bool validRun = proxy.RunService(clientDiffieHellman.Encrypt(serverPublicKey, ip),
                                                         clientDiffieHellman.Encrypt(serverPublicKey, port),
                                                         clientDiffieHellman.Encrypt(serverPublicKey, protocol));
+                                    if (validRun)
+                                    {
+                                        string testAddress = $"net.tcp://{ip}:{port}/SMImplement";
+                                        EndpointAddress testEndpointAddress = new EndpointAddress(new Uri(testAddress), EndpointIdentity.CreateUpnIdentity("service"));
+                                        ChannelFactory<IServiceManager> testFactory = new ChannelFactory<IServiceManager>(binding);
+                                        IServiceManager testProxy = testFactory.CreateChannel(testEndpointAddress);
+
+                                        testProxy.TestConnection();
+
+                                        Console.WriteLine("[ CLIENT ] Service run successfully!\n");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("[ CLIENT ] Service falied to run!\n");
+                                    }
+
                                     option = -1;
                                     break;
                                 case 2:
