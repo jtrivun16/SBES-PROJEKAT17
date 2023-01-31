@@ -61,20 +61,29 @@ namespace SecurityManager {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ExcangeSessionKey,RunService.
+        ///   Looks up a localized string similar to ExchangeSessionKey, RunService, Modify.
         /// </summary>
-        internal static string Client {
+        internal static string Admin {
             get {
-                return ResourceManager.GetString("Client", resourceCulture);
+                return ResourceManager.GetString("Admin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ExcangeSessionKey,RunService,Modify.
+        ///   Looks up a localized string similar to ExchangeSessionKey.
         /// </summary>
-        internal static string Modifier {
+        internal static string ExchangeSessionKey {
             get {
-                return ResourceManager.GetString("Modifier", resourceCulture);
+                return ResourceManager.GetString("ExchangeSessionKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RunService.
+        /// </summary>
+        internal static string RunService {
+            get {
+                return ResourceManager.GetString("RunService", resourceCulture);
             }
         }
     }

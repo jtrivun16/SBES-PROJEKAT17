@@ -24,7 +24,7 @@ namespace Client
 
             Console.WriteLine("Korisnik koji je pokrenuo klijenta je : " + WindowsIdentity.GetCurrent().Name);
 
-            EndpointAddress endpointAddress = new EndpointAddress(new Uri(address), EndpointIdentity.CreateUpnIdentity("wcfServer"));
+            EndpointAddress endpointAddress = new EndpointAddress(new Uri(address), EndpointIdentity.CreateUpnIdentity("serviceManager"));
 
             bool connected = false;
 
@@ -44,80 +44,85 @@ namespace Client
                     //connect
                     ExcangeKey clientDiffieHellman = new ExcangeKey();
                     byte[] serverPublicKey = null;
+
                     serverPublicKey = proxy.Connect(clientDiffieHellman.PublicKey, clientDiffieHellman.IV);
-                    connected = true;
+                    if(serverPublicKey != null)
+                    {
+                        connected = true;
 
 
-                    int option = -1;
+                        int option = -1;
                         bool valid = false;
 
-                    do
-                    {
-                        Console.WriteLine("============ MENU ============");          
-                        Console.WriteLine("[ 1 ] Run service");
-                        Console.WriteLine("[ 2 ] Stop service");
-                        Console.WriteLine("[ 3 ] DoS Attack - Test");
-                        Console.WriteLine("==============================");
-
-                        Console.Write("Choose option: ");
-                        valid = Int32.TryParse(Console.ReadLine(), out option);
-
-                    } while (option < 1 || option > 6 && !valid);
-
-
-                    while (true)
-                    {
-                        switch (option)
+                        do
                         {
-                            case 1:                           
-                                if (!connected)
-                                {
-                                    Console.WriteLine("Morate se konektovati!");
-                                    break;
-                                }
-                                Console.Write("Unesite IP adresu      : ");
-                                string ip = Console.ReadLine().Trim();
-                                Console.Write("Unesite port    : ");
-                                string port = Console.ReadLine().Trim();
-                                Console.Write("Unesite protokol: ");
-                                string protocol = Console.ReadLine().Trim();
+                            Console.WriteLine("============ MENU ============");
+                            Console.WriteLine("[ 1 ] Run service");
+                            Console.WriteLine("[ 2 ] Stop service");
+                            Console.WriteLine("[ 3 ] DoS Attack - Test");
+                            Console.WriteLine("==============================");
 
-                                bool validRun = proxy.RunService(clientDiffieHellman.Encrypt(serverPublicKey, ip),
-                                                    clientDiffieHellman.Encrypt(serverPublicKey, port),
-                                                    clientDiffieHellman.Encrypt(serverPublicKey, protocol));
-                                option = -1;
-                                break;
-                            case 2:
-                                if (!connected)
-                                {
-                                    Console.WriteLine("Please connect first!");
-                                    break;
-                                }
-                                Console.Write("Enter IP      : ");
-                                string stopIp = Console.ReadLine().Trim();
-                                Console.Write("Enter PORT    : ");
-                                string stopPort = Console.ReadLine().Trim();
-                                Console.Write("Enter PROTOCOL: ");
-                                string stopProtocol = Console.ReadLine().Trim();
+                            Console.Write("Choose option: ");
+                            valid = Int32.TryParse(Console.ReadLine(), out option);
 
-                                bool validStop = proxy.StopService(clientDiffieHellman.Encrypt(serverPublicKey, stopIp),
-                                                    clientDiffieHellman.Encrypt(serverPublicKey, stopPort),
-                                                    clientDiffieHellman.Encrypt(serverPublicKey, stopProtocol));
-                                if (validStop)
-                                {
-                                    Console.WriteLine("[ CLIENT ] Service stopped successfully!\n");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("[ CLIENT ] Service falied to stop!\n");
-                                }
-                                option = -1;
-                                break;
-                            default:
-                                option = -1;
-                                break;
+                        } while (option < 1 || option > 6 && !valid);
+
+
+                        while (true)
+                        {
+                            switch (option)
+                            {
+                                case 1:
+                                    if (!connected)
+                                    {
+                                        Console.WriteLine("Morate se konektovati!");
+                                        break;
+                                    }
+                                    Console.Write("Unesite IP adresu      : ");
+                                    string ip = Console.ReadLine().Trim();
+                                    Console.Write("Unesite port    : ");
+                                    string port = Console.ReadLine().Trim();
+                                    Console.Write("Unesite protokol: ");
+                                    string protocol = Console.ReadLine().Trim();
+
+                                    bool validRun = proxy.RunService(clientDiffieHellman.Encrypt(serverPublicKey, ip),
+                                                        clientDiffieHellman.Encrypt(serverPublicKey, port),
+                                                        clientDiffieHellman.Encrypt(serverPublicKey, protocol));
+                                    option = -1;
+                                    break;
+                                case 2:
+                                    if (!connected)
+                                    {
+                                        Console.WriteLine("Please connect first!");
+                                        break;
+                                    }
+                                    Console.Write("Enter IP      : ");
+                                    string stopIp = Console.ReadLine().Trim();
+                                    Console.Write("Enter PORT    : ");
+                                    string stopPort = Console.ReadLine().Trim();
+                                    Console.Write("Enter PROTOCOL: ");
+                                    string stopProtocol = Console.ReadLine().Trim();
+
+                                    bool validStop = proxy.StopService(clientDiffieHellman.Encrypt(serverPublicKey, stopIp),
+                                                        clientDiffieHellman.Encrypt(serverPublicKey, stopPort),
+                                                        clientDiffieHellman.Encrypt(serverPublicKey, stopProtocol));
+                                    if (validStop)
+                                    {
+                                        Console.WriteLine("[ CLIENT ] Service stopped successfully!\n");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("[ CLIENT ] Service falied to stop!\n");
+                                    }
+                                    option = -1;
+                                    break;
+                                default:
+                                    option = -1;
+                                    break;
+                            }
                         }
                     }
+                    
                 }
 
                 Console.ReadLine(); 

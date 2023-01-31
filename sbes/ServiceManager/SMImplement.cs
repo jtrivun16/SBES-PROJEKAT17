@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SecurityManager;
 using Common;
+using System.Security.Permissions;
 
 namespace ServiceManager
 {
@@ -27,7 +28,8 @@ namespace ServiceManager
 
         //static BlacklistManager BLM = BlacklistManager.Instance();
 
-      
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "ExchangeSessionKey")]
         public byte[] Connect(byte[] publicKey, byte[] iv)
         {
             ClientPublicKey = publicKey;
@@ -41,12 +43,14 @@ namespace ServiceManager
             return excangeKey.PublicKey;
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "RunService")]
         public bool RunService(byte[] ip, byte[] port, byte[] protocol)
         {
             Console.WriteLine("RUN");
             return true;
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "RunService")]
         public bool StopService(byte[] ip, byte[] port, byte[] protocol)
         {
             Console.WriteLine("STOp");
