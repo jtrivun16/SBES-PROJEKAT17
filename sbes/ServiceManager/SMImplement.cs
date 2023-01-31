@@ -29,7 +29,7 @@ namespace ServiceManager
         //static BlacklistManager BLM = BlacklistManager.Instance();
 
 
-        //[PrincipalPermission(SecurityAction.Demand, Role = "ExchangeSessionKey")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "ExchangeSessionKey")]
         public byte[] Connect(byte[] publicKey, byte[] iv)
         {
             ClientPublicKey = publicKey;
