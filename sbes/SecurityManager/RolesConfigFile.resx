@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Admin" xml:space="preserve">
-    <value>ExchangeSessionKey, RunService, Modify</value>
+    <value>Modify,ExchangeSessionKey, RunService</value>
   </data>
   <data name="ExchangeSessionKey" xml:space="preserve">
     <value>ExchangeSessionKey</value>

@@ -42,6 +42,9 @@ namespace ServiceManager
             {
                 BlackListManager.blackListPort.Add(value);
                 blackListUpddate = BlackListManager.UpdateBlackList("port=" + value.ToString());
+
+                if (blackListUpddate)
+                    Console.WriteLine("Port :" + value + " is banned");
             }
             return blackListUpddate;
         }

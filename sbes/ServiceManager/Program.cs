@@ -18,6 +18,9 @@ namespace ServiceManager
         public static bool exitService = false;
         static void Main(string[] args)
         {
+            BlackListManager blacListManager = new BlackListManager();
+            blacListManager.IsBlackListCorrupted();
+
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:8888/WCFService";
 

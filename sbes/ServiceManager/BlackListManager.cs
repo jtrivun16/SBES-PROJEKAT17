@@ -17,9 +17,15 @@ namespace ServiceManager
 
         public BlackListManager()
         {
+            if (!File.Exists("blacklist.txt"))
+                File.Create("blacklist.txt");
+
             blackListPort = new List<string>();
             blackListProtocol = new List<string>();
             fileChecksum = BlackListChecksum();
+
+            ReadBlackListFile(); //load all data on start
+
         }
 
         public void ReadBlackListFile()
@@ -58,6 +64,7 @@ namespace ServiceManager
             {
                 using (var md5 = MD5.Create())
                 {
+                  
                     using (var stream = File.OpenRead("blacklist.txt"))
                     {
                         return md5.ComputeHash(stream);

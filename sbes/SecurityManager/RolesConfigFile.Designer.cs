@@ -61,7 +61,7 @@ namespace SecurityManager {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ExchangeSessionKey, RunService, Modify.
+        ///   Looks up a localized string similar to Modify,ExchangeSessionKey, RunService.
         /// </summary>
         internal static string Admin {
             get {
