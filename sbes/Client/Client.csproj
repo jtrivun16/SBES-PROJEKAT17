@@ -60,6 +60,10 @@
       <Project>{5AA9D338-99F0-4E11-84E1-0CECCFB4293C}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SecurityManager\SecurityManager.csproj">
+      <Project>{BF6A5629-829D-459C-ADAA-D5AB79DDE9F0}</Project>
+      <Name>SecurityManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceManager\ServiceManager.csproj">
       <Project>{146CE5C3-54BC-4CBE-AE77-ECF369A417F6}</Project>
       <Name>ServiceManager</Name>

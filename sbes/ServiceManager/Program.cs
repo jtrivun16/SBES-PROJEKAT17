@@ -8,12 +8,14 @@ using System.Security.Principal;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ServiceManager
 {
     class Program
     {
+        public static bool exitService = false;
         static void Main(string[] args)
         {
             NetTcpBinding binding = new NetTcpBinding();
@@ -39,6 +41,21 @@ namespace ServiceManager
             host.Open();
             Console.WriteLine(WindowsIdentity.GetCurrent().Name);
             Console.WriteLine("Server is successfully opened");
+
+
+            while (true)
+            {
+                // if file corrupted, shutdown server
+                if (exitService)
+                {
+                    host.Close();
+                    Console.WriteLine("Service shutdown...");
+                    break;
+                }
+
+                Thread.Sleep(1000);
+            }
+            Console.ReadLine();
 
             Console.ReadLine();
 

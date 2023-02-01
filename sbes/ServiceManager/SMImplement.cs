@@ -21,9 +21,29 @@ namespace ServiceManager
         public ExcangeKey excangeKey = new ExcangeKey();
         public Dictionary<string, ServiceHost> hosts = new Dictionary<string, ServiceHost>();
 
-        public void AddItemToBlackList(string type, string value)
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
+        public bool AddProtocolToBlackList( string value)
         {
-            throw new NotImplementedException();
+            bool blackListUpddate = false;
+            if (!BlackListManager.blackListProtocol.Contains(value))
+            {
+                BlackListManager.blackListProtocol.Add(value);
+                blackListUpddate =BlackListManager.UpdateBlackList("protocol=" + value.ToString());
+            }
+            return blackListUpddate;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
+        public bool AddPortToBlackList( string value)
+        {
+            bool blackListUpddate = false;
+            if (!BlackListManager.blackListPort.Contains(value))
+            {
+                BlackListManager.blackListPort.Add(value);
+                blackListUpddate = BlackListManager.UpdateBlackList("port=" + value.ToString());
+            }
+            return blackListUpddate;
         }
 
         //static BlacklistManager BLM = BlacklistManager.Instance();
@@ -65,11 +85,14 @@ namespace ServiceManager
             NetTcpBinding binding = new NetTcpBinding();
             string address = $"{decryptedProtocol}://{decryptedIp}:{decryptedPort}/SMImplement";
 
-            if (hosts.ContainsKey(address))
+
+            if (hosts.ContainsKey(address) || BlackListManager.ItemBlacklisted(decryptedPort, decryptedProtocol))
             {
+                //Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailure, username);
                 Console.WriteLine("Service faild to run ...");
                 return false;
             }
+          
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;

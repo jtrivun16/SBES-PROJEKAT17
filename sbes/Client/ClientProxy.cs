@@ -65,6 +65,32 @@ namespace Client
             }
         }
 
+        public bool AddPortToBlackList(string value)
+        {
+            try
+            {
+                return factory.AddPortToBlackList(value);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+                return false;
+            }
+        }
+
+        public bool AddProtocolToBlackList(string value)
+        {
+            try
+            {
+                return factory.AddProtocolToBlackList(value);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+                return false;
+            }
+        }
+
         public void TestConnection()
         {
             Console.WriteLine("[ CONNECTION WORKING ] This is a test message.\n");
