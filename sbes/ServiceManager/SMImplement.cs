@@ -30,9 +30,14 @@ namespace ServiceManager
             {
                 BlackListManager.blackListProtocol.Add(value);
                 blackListUpddate =BlackListManager.UpdateBlackList("protocol=" + value.ToString());
+
+                if (blackListUpddate)
+                    Console.WriteLine("Protocol :" + value + " is not banned anymore");
             }
             return blackListUpddate;
         }
+
+
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
         public bool AddPortToBlackList( string value)
@@ -45,6 +50,40 @@ namespace ServiceManager
 
                 if (blackListUpddate)
                     Console.WriteLine("Port :" + value + " is banned");
+            }
+            return blackListUpddate;
+        }
+
+
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
+        public bool RemoveProtocolToBlackList(string value)
+        {
+            bool blackListUpddate = false;
+            if (BlackListManager.blackListProtocol.Contains(value))
+            {
+                BlackListManager.blackListProtocol.Remove(value);
+                blackListUpddate = BlackListManager.UpdateBlackList("protocol=" + value.ToString());
+
+                if (blackListUpddate)
+                    Console.WriteLine("Protocol :" + value + " is not banned anymore");
+            }
+            return blackListUpddate;
+        }
+
+
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
+        public bool RemovePortToBlackList(string value)
+        {
+            bool blackListUpddate = false;
+            if (BlackListManager.blackListPort.Contains(value))
+            {
+                BlackListManager.blackListPort.Remove(value);
+                blackListUpddate = BlackListManager.UpdateBlackList("port=" + value.ToString());
+
+                if (blackListUpddate)
+                    Console.WriteLine("Port :" + value + " is not banned anymore");
             }
             return blackListUpddate;
         }
@@ -65,6 +104,8 @@ namespace ServiceManager
 
             return excangeKey.PublicKey;
         }
+
+
 
         [PrincipalPermission(SecurityAction.Demand, Role = "RunService")]
         public bool RunService(byte[] ip, byte[] port, byte[] protocol)
@@ -112,6 +153,8 @@ namespace ServiceManager
             return true;
         }
 
+
+
         [PrincipalPermission(SecurityAction.Demand, Role = "RunService")]
         public bool StopService(byte[] ip, byte[] port, byte[] protocol)
         {
@@ -140,6 +183,8 @@ namespace ServiceManager
 
             return false;
         }
+
+
 
         public void TestConnection()
         {

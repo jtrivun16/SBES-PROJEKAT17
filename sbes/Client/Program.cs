@@ -15,10 +15,12 @@ namespace Client
 {
     class Program
     {
+        public static byte[] serverPublicKey = null;
         static void Main(string[] args)
         {
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:8888/WCFService";
+
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
@@ -45,91 +47,42 @@ namespace Client
 
                     //connect
                     ExcangeKey clientDiffieHellman = new ExcangeKey();
-                    byte[] serverPublicKey = null;
+                   
 
-                    serverPublicKey = proxy.Connect(clientDiffieHellman.PublicKey, clientDiffieHellman.IV);
-                    connected = true;
-
-            
-                    while (true)
+                    if(Connect(clientDiffieHellman, proxy))
                     {
-                        
+                        connected = true;
+                        while (true)
+                        {
                             switch (Izbor())
                             {
                                 case 1:
-                                    if (!connected)
-                                    {
-                                        Console.WriteLine("Morate se konektovati!");
-                                        break;
-                                    }
-                                    Console.Write("Unesite IP adresu      : ");
-                                    string ip = Console.ReadLine().Trim();
-                                    Console.Write("Unesite port    : ");
-                                    string port = Console.ReadLine().Trim();
-                                    Console.Write("Unesite protokol: ");
-                                    string protocol = Console.ReadLine().Trim();
-
-                                    bool validRun = proxy.RunService(clientDiffieHellman.Encrypt(serverPublicKey, ip),
-                                                        clientDiffieHellman.Encrypt(serverPublicKey, port),
-                                                        clientDiffieHellman.Encrypt(serverPublicKey, protocol));
+                                    StartNewService(proxy, clientDiffieHellman);
                                     break;
                                 case 2:
-                                    if (!connected)
-                                    {
-                                        Console.WriteLine("Please connect first!");
-                                        break;
-                                    }
-                                    Console.Write("Enter IP      : ");
-                                    string stopIp = Console.ReadLine().Trim();
-                                    Console.Write("Enter PORT    : ");
-                                    string stopPort = Console.ReadLine().Trim();
-                                    Console.Write("Enter PROTOCOL: ");
-                                    string stopProtocol = Console.ReadLine().Trim();
-
-                                    bool validStop = proxy.StopService(clientDiffieHellman.Encrypt(serverPublicKey, stopIp),
-                                                        clientDiffieHellman.Encrypt(serverPublicKey, stopPort),
-                                                        clientDiffieHellman.Encrypt(serverPublicKey, stopProtocol));
-                                    if (validStop)
-                                    {
-                                        Console.WriteLine("[ CLIENT ] Service stopped successfully!\n");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("[ CLIENT ] Service falied to stop!\n");
-                                    }
+                                    StopService(proxy, clientDiffieHellman);
                                     break;
 
-                            case 3:
-                                if (!connected)
-                                {
-                                    Console.WriteLine("Please connect first!");
+                                case 3:
+                                    BanPort(proxy);
                                     break;
-                                }
-                                Console.Write("Port to ban:");
-                                string portBan = Console.ReadLine().Trim();
-                                proxy.AddPortToBlackList(portBan);
-                                break;
-                            case 4:
-                                if (!connected)
-                                {
-                                    Console.WriteLine("Please connect first!");
+                                case 4:
+                                    BanProtocol(proxy);
                                     break;
-                                }
-                                Console.Write("Protocol to ban:");
-                                string protocolBan = Console.ReadLine().Trim();
-                                proxy.AddProtocolToBlackList(protocolBan);
-                                break;
-                            //TODO 6,7
-                            default:
+                                case 5:
+                                    RemoveProtocolFromBL(proxy);
+                                    break;
+                                case 6:
+                                    RemovePortFromBL(proxy);
+                                    break;
+                                //TODO 7
+                                default:
                                     break;
                             }
-                        
-
-                    }
-                    
+                        }
+                        Console.ReadLine();
+                    }     
                 }
-
-                Console.ReadLine(); 
             }
             else
             {
@@ -161,7 +114,129 @@ namespace Client
             return option;
         }
 
-    
+        public static bool Connect(ExcangeKey clientDiffieHellman,ClientProxy proxy)
+        {
+            serverPublicKey = proxy.Connect(clientDiffieHellman.PublicKey, clientDiffieHellman.IV);
+
+            if (serverPublicKey != null)
+                return true;
+
+            return false;
+        }
+
+
+        public static void StartNewService(ClientProxy proxy, ExcangeKey clientDiffieHellman)
+        {
+            Console.Write("Unesite IP adresu      : ");
+            string ip = Console.ReadLine().Trim();
+            Console.Write("Unesite port    : ");
+            string port = Console.ReadLine().Trim();
+            Console.Write("Unesite protokol: ");
+            string protocol = Console.ReadLine().Trim();
+
+            bool validRun = proxy.RunService(clientDiffieHellman.Encrypt(serverPublicKey, ip),
+                                clientDiffieHellman.Encrypt(serverPublicKey, port),
+                                clientDiffieHellman.Encrypt(serverPublicKey, protocol));
+
+            if (validRun)
+            {
+                Console.WriteLine("[ CLIENT ] Service runned successfully!\n");
+            }
+            else
+            {
+                Console.WriteLine("[ CLIENT ] Service run falied!\n");
+            }
+
+
+        }
+
+
+        public static void StopService(ClientProxy proxy, ExcangeKey clientDiffieHellman)
+        {
+            Console.Write("Enter IP      : ");
+            string stopIp = Console.ReadLine().Trim();
+            Console.Write("Enter PORT    : ");
+            string stopPort = Console.ReadLine().Trim();
+            Console.Write("Enter PROTOCOL: ");
+            string stopProtocol = Console.ReadLine().Trim();
+
+            bool validStop = proxy.StopService(clientDiffieHellman.Encrypt(serverPublicKey, stopIp),
+                                clientDiffieHellman.Encrypt(serverPublicKey, stopPort),
+                                clientDiffieHellman.Encrypt(serverPublicKey, stopProtocol));
+            if (validStop)
+            {
+                Console.WriteLine("[ CLIENT ] Service stopped successfully!\n");
+            }
+            else
+            {
+                Console.WriteLine("[ CLIENT ] Service falied to stop!\n");
+            }
+        }
+
+
+        public static void BanPort(ClientProxy proxy)
+        {
+            Console.Write("Port to ban:");
+            string portBan = Console.ReadLine().Trim();
+
+            if (proxy.AddPortToBlackList(portBan))
+            {
+                Console.WriteLine($"Port: {portBan} is banned successfyly.\n");
+            }
+            else
+            {
+                Console.WriteLine($"Port ban failed.\n");
+            }
+        }
+
+
+        public static void BanProtocol(ClientProxy proxy)
+        {
+            Console.Write("Protocol to ban:");
+            string protocolBan = Console.ReadLine().Trim();
+            if (proxy.AddProtocolToBlackList(protocolBan))
+            {
+                Console.WriteLine($"Protocol: {protocolBan} is banned successfyly.\n");
+            }
+            else
+            {
+                Console.WriteLine($"Protocol ban failed.\n");
+            }
+        }
+
+
+        public static void RemovePortFromBL(ClientProxy proxy)
+        {
+            Console.Write("Port to remove from blacklist:");
+            string portToRemove = Console.ReadLine().Trim();
+            if (proxy.AddPortToBlackList(portToRemove))
+            {
+                Console.WriteLine($"Port: {portToRemove} is removed from blacklist successfyly.\n");
+            }
+            else
+            {
+                Console.WriteLine($"Port is not removed.\n");
+            }
+        }
+
+
+        public static void RemoveProtocolFromBL(ClientProxy proxy)
+        {
+            Console.Write("Protocol to remove from blacklist:");
+            string protocolToRemove = Console.ReadLine().Trim();
+            if (proxy.AddProtocolToBlackList(protocolToRemove))
+            {
+                Console.WriteLine($"Protocol: {protocolToRemove} is removed from blacklist successfyly.\n");
+            }
+            else
+            {
+                Console.WriteLine($"Protocol is not removed.\n");
+            }
+        }
+
+
+
+
     }
 }
 
