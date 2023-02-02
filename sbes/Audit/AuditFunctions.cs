@@ -108,6 +108,29 @@ namespace Audit
                 case 3:
                     try
                     {
+                        LogEventTypes.StopServiceFailure(username);
+                        message = $"[ EVENT LOG ] [ FAILURE ] User \'{username}\' failed tp stop service.";
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    break;
+                case 4:
+                    try
+                    {
+                        LogEventTypes.StopServiceSuccess(username);
+                        message = $"[ EVENT LOG ] [ FAILURE ] User \'{username}\' successfully stopped service.";
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    break;
+               
+                case 5:
+                    try
+                    {
                         LogEventTypes.DoSAttackDetected(username);
                         message = $"[ EVENT LOG ] [ INFO ] DoS attack detected by user \'{username}\'.";
                     }
@@ -116,7 +139,7 @@ namespace Audit
                         Console.WriteLine(e.Message);
                     }
                     break;
-                case 4:
+                case 6:
                     try
                     {
                         LogEventTypes.BlacklistFileChanged();
