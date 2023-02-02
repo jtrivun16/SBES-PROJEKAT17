@@ -149,6 +149,8 @@ namespace ServiceManager
             NetTcpBinding binding = new NetTcpBinding();
             string address = $"{decryptedProtocol}://{decryptedIp}:{decryptedPort}/SMImplement";
 
+            //get group of client
+          
 
             if (hosts.ContainsKey(address) || BlackListManager.ItemIsOnBlacklist(decryptedPort, decryptedProtocol))
             {

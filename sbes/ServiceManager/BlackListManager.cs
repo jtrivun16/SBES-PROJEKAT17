@@ -92,9 +92,9 @@ namespace ServiceManager
                         {
                             if (fileChecksum[i] != help[i])
                             {
-                                //Program.auditProxy.LogEvent((int)AuditEventTypes.BlacklistFileChanged, " ");
+                                Program.auditProxy.LogEvent((int)Audit.AuditEventTypes.BlacklistFileChanged, " ");
                                 Console.WriteLine("Unauthorised blacklist file corrupted!!!");
-                                //Program.flagShutdown = true;  //U slučaju da je integritet narušen, SM prijavljuje događaj Audit komponenti i nakon toga se zaustavlja.
+                                Program.exitService = true;  //U slučaju da je integritet narušen, SM prijavljuje događaj Audit komponenti i nakon toga se zaustavlja.
 
                                 break;
                             }
