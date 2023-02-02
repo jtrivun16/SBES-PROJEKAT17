@@ -11,7 +11,7 @@ namespace Audit
     {
         private static EventLog customLog = null;
         const string SourceName = "Audit";
-        const string LogName = "ProjekatLog";
+        const string LogName = "Application";
 
 		static LogEventTypes()
 		{
