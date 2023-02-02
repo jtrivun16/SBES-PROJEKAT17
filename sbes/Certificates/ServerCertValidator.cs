@@ -10,7 +10,7 @@ using Common;
 
 namespace Certificates
 {
-    public class ServerCertValidaor : X509CertificateValidator
+    public class ServerCertValidator : X509CertificateValidator
 	{
 		public override void Validate(X509Certificate2 certificate)
 		{

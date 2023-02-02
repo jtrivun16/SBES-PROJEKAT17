@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditProxy.cs" />
     <Compile Include="BlackListManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +55,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Audit\Audit.csproj">
+      <Project>{F9FC70F8-E530-48A7-AA10-1FD1C435369B}</Project>
+      <Name>Audit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Certificates\Certificates.csproj">
+      <Project>{97B7B297-0E6B-40F5-9DB6-650477706E17}</Project>
+      <Name>Certificates</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{ade86f8b-be98-4cbb-abff-d1b73a729364}</Project>
       <Name>Common</Name>

@@ -137,7 +137,7 @@ namespace ServiceManager
         }
 
 
-        public static bool ItemBlacklisted(string port, string protocol)
+        public static bool ItemIsOnBlacklist(string port, string protocol)
         {
             if (blackListPort.Contains(port) || blackListProtocol.Contains(protocol))
                 return true;

@@ -93,7 +93,14 @@ namespace Client
 
         public void TestConnection()
         {
-            Console.WriteLine("[ CONNECTION WORKING ] This is a test message.\n");
+            try
+            {
+                factory.TestConnection();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+            }
         }
     }
 }

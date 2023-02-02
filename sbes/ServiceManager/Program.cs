@@ -1,9 +1,11 @@
-﻿using Interfaces;
+﻿using Certificates;
+using Interfaces;
 using SecurityManager;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Policy;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.ServiceModel;
 using System.ServiceModel.Description;
@@ -15,11 +17,15 @@ namespace ServiceManager
 {
     class Program
     {
+        public static IAuditFunctions auditProxy = null;
+
         public static bool exitService = false;
         static void Main(string[] args)
         {
             BlackListManager blacListManager = new BlackListManager();
             blacListManager.IsBlackListCorrupted();
+
+            auditProxy = ConnectAudit();
 
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:8888/WCFService";
@@ -29,8 +35,11 @@ namespace ServiceManager
             binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
 
             ServiceHost host = new ServiceHost(typeof(SMImplement));
-            host.AddServiceEndpoint(typeof(IServiceManager), binding, address);
 
+            host.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
+            host.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
+
+            host.AddServiceEndpoint(typeof(IServiceManager), binding, address);
 
             // podesavamo da se koristi MyAuthorizationManager umesto ugradjenog
             host.Authorization.ServiceAuthorizationManager = new CustomAuthorizationManager();
@@ -63,6 +72,23 @@ namespace ServiceManager
             Console.ReadLine();
 
 
+        }
+
+
+        static AuditProxy ConnectAudit()
+        {
+            /// Define the expected service certificate. It is required to establish cmmunication using certificates.
+            string srvCertCN = "auditcert";
+
+            NetTcpBinding binding = new NetTcpBinding();
+            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+
+            /// Use CertManager class to obtain the certificate based on the "srvCertCN" representing the expected service identity.
+            X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, srvCertCN);
+            EndpointAddress address = new EndpointAddress(new Uri("net.tcp://localhost:8200/Audit"),
+                                      new X509CertificateEndpointIdentity(srvCert));
+
+            return new AuditProxy(binding, address);
         }
     }
 }

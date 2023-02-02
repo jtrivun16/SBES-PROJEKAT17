@@ -45,7 +45,7 @@
     <Compile Include="CertManager.cs" />
     <Compile Include="AuditCertValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerCertValidaor.cs" />
+    <Compile Include="ServerCertValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

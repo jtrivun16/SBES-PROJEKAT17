@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using SecurityManager;
 using Common;
 using System.Security.Permissions;
+using Audit;
 
 namespace ServiceManager
 {
@@ -100,7 +101,7 @@ namespace ServiceManager
             Console.WriteLine("[ CLIENT CONNECTED ]\n");
             WindowsIdentity windowsIdentity = Thread.CurrentPrincipal.Identity as WindowsIdentity;
             string username = Formatter.ParseName(windowsIdentity.Name);
-            //Program.auditProxy.LogEvent((int)AuditEventTypes.ConnectSuccess, username);
+            Program.auditProxy.LogEvent((int)AuditEventTypes.ConnectSuccess, username);
 
             return excangeKey.PublicKey;
         }
@@ -130,9 +131,9 @@ namespace ServiceManager
             string address = $"{decryptedProtocol}://{decryptedIp}:{decryptedPort}/SMImplement";
 
 
-            if (hosts.ContainsKey(address) || BlackListManager.ItemBlacklisted(decryptedPort, decryptedProtocol))
+            if (hosts.ContainsKey(address) || BlackListManager.ItemIsOnBlacklist(decryptedPort, decryptedProtocol))
             {
-                //Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailure, username);
+                Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailure, username);
                 Console.WriteLine("Service faild to run ...");
                 return false;
             }
@@ -146,7 +147,8 @@ namespace ServiceManager
 
             host.AddServiceEndpoint(typeof(IServiceManager), binding, address);
 
-            host.Open();        
+            host.Open();
+            Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceSuccess, username);
             hosts.Add(address, host);
 
             Console.WriteLine("Service run on port " + decryptedPort);
