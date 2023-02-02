@@ -13,8 +13,10 @@ namespace Audit
         ConnectSuccess = 0,
         RunServiceSuccess = 1,
         RunServiceFailure = 2,
-        DoSAttackDetected = 3,
-        BlacklistFileChanged = 4
+        StopServiceFailure = 3, // 
+        StopServiceSuccess = 4, // 
+        DoSAttackDetected = 5,
+        BlacklistFileChanged = 6
     }
 
     public class AuditEvents
@@ -52,6 +54,17 @@ namespace Audit
         public static string RunServiceFailure
         {
             get { return ResourceMgr.GetString(AuditEventTypes.RunServiceFailure.ToString()); }
+        } 
+        
+        
+        public static string StopServiceSuccess
+        {
+            get { return ResourceMgr.GetString(AuditEventTypes.StopServiceSuccess.ToString()); }
+        }
+
+        public static string StopServiceFailure
+        {
+            get { return ResourceMgr.GetString(AuditEventTypes.StopServiceFailure.ToString()); }
         }
 
         public static string DoSAttackDetected

@@ -71,6 +71,38 @@ namespace Audit
 				throw new ArgumentException(string.Format("Error while trying to write event (eventid = {0}) to event log.", (int)AuditEventTypes.RunServiceFailure));
 			}
 		}
+		public static void StopServiceSuccess(string username)
+		{
+			if (customLog != null)
+			{
+				string StopServiceSuccess = AuditEvents.StopServiceSuccess;
+				string message = String.Format(StopServiceSuccess, username);
+				customLog.WriteEntry(message);
+			}
+			else
+			{
+				throw new ArgumentException(string.Format("Error while trying to write event (eventid = {0}) to event log.", (int)AuditEventTypes.StopServiceSuccess));
+			}
+		}
+
+		public static void StopServiceFailure(string username)
+		{
+			if (customLog != null)
+			{
+				string StopServiceFailure = AuditEvents.StopServiceFailure;
+				string message = String.Format(StopServiceFailure, username);
+				customLog.WriteEntry(message);
+			}
+			else
+			{
+				throw new ArgumentException(string.Format("Error while trying to write event (eventid = {0}) to event log.", (int)AuditEventTypes.StopServiceFailure));
+			}
+		}
+
+
+
+
+
 
 		public static void DoSAttackDetected(string username)
 		{

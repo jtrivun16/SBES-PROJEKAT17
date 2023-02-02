@@ -104,5 +104,23 @@ namespace Audit {
                 return ResourceManager.GetString("RunServiceSuccess", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [ FAILURE ] User {0} failed to  stop service..
+        /// </summary>
+        internal static string StopServiceFailure {
+            get {
+                return ResourceManager.GetString("StopServiceFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [ SUCCESS ] User {0} successfullystopped service..
+        /// </summary>
+        internal static string StopServiceSuccess {
+            get {
+                return ResourceManager.GetString("StopServiceSuccess", resourceCulture);
+            }
+        }
     }
 }
