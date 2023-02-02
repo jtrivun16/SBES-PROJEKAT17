@@ -91,6 +91,32 @@ namespace Client
             }
         }
 
+        public bool RemoveProtocolFromBlackList(string value)
+        {
+            try
+            {
+                return factory.RemoveProtocolFromBlackList(value);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+                return false;
+            }
+        }
+
+        public bool RemovePortFromBlackList(string value)
+        {
+            try
+            {
+                return factory.RemovePortFromBlackList(value);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+                return false;
+            }
+        }
+
         public void TestConnection()
         {
             try

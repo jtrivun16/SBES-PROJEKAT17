@@ -23,27 +23,7 @@ namespace ServiceManager
         public Dictionary<string, ServiceHost> hosts = new Dictionary<string, ServiceHost>();
 
 
-        [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
-        public bool AddProtocolToBlackList( string value)
-        {
-            WindowsIdentity windowsIdentity = Thread.CurrentPrincipal.Identity as WindowsIdentity;
-            string username = Formatter.ParseName(windowsIdentity.Name);
-
-            bool blackListUpddate = false;
-            if (!BlackListManager.blackListProtocol.Contains(value))
-            {
-                BlackListManager.blackListProtocol.Add(value);
-                blackListUpddate = BlackListManager.UpdateBlackList("protocol=" + value.ToString());
-
-                if (blackListUpddate)
-                {
-                    Console.WriteLine("Protocol :" + value + " is not banned anymore");
-                    Program.auditProxy.LogEvent((int)AuditEventTypes.BlacklistFileChanged, username);
-                } 
-                }
-            return blackListUpddate;
-        }
-
+      
 
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
@@ -56,12 +36,31 @@ namespace ServiceManager
             if (!BlackListManager.blackListPort.Contains(value))
             {
                 BlackListManager.blackListPort.Add(value);
-                blackListUpddate = BlackListManager.UpdateBlackList("port=" + value.ToString());
+                blackListUpddate = BlackListManager.UpdateBlackList();
 
                 if (blackListUpddate)
                 {
                     Console.WriteLine("Port :" + value + " is banned");
-                    Program.auditProxy.LogEvent((int)AuditEventTypes.BlacklistFileChanged, username);
+                }
+            }
+            return blackListUpddate;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
+        public bool AddProtocolToBlackList(string value)
+        {
+            WindowsIdentity windowsIdentity = Thread.CurrentPrincipal.Identity as WindowsIdentity;
+            string username = Formatter.ParseName(windowsIdentity.Name);
+
+            bool blackListUpddate = false;
+            if (!BlackListManager.blackListProtocol.Contains(value))
+            {
+                BlackListManager.blackListProtocol.Add(value);
+                blackListUpddate = BlackListManager.UpdateBlackList();
+
+                if (blackListUpddate)
+                {
+                    Console.WriteLine("Protocol :" + value + " is banned");
                 }
             }
             return blackListUpddate;
@@ -70,7 +69,7 @@ namespace ServiceManager
 
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
-        public bool RemoveProtocolToBlackList(string value)
+        public bool RemoveProtocolFromBlackList(string value)
         {
             WindowsIdentity windowsIdentity = Thread.CurrentPrincipal.Identity as WindowsIdentity;
             string username = Formatter.ParseName(windowsIdentity.Name);
@@ -79,12 +78,11 @@ namespace ServiceManager
             if (BlackListManager.blackListProtocol.Contains(value))
             {
                 BlackListManager.blackListProtocol.Remove(value);
-                blackListUpddate = BlackListManager.UpdateBlackList("protocol=" + value.ToString());
+                blackListUpddate = BlackListManager.UpdateBlackList();
 
                 if (blackListUpddate)
                 {
                     Console.WriteLine("Protocol :" + value + " is not banned anymore");
-                    Program.auditProxy.LogEvent((int)AuditEventTypes.BlacklistFileChanged, username);
                 }
             }
             return blackListUpddate;
@@ -93,7 +91,7 @@ namespace ServiceManager
 
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
-        public bool RemovePortToBlackList(string value)
+        public bool RemovePortFromBlackList(string value)
         {
             WindowsIdentity windowsIdentity = Thread.CurrentPrincipal.Identity as WindowsIdentity;
             string username = Formatter.ParseName(windowsIdentity.Name);
@@ -102,12 +100,11 @@ namespace ServiceManager
             if (BlackListManager.blackListPort.Contains(value))
             {
                 BlackListManager.blackListPort.Remove(value);
-                blackListUpddate = BlackListManager.UpdateBlackList("port=" + value.ToString());
+                blackListUpddate = BlackListManager.UpdateBlackList();
 
                 if (blackListUpddate)
                 {
                     Console.WriteLine("Port :" + value + " is not banned anymore");
-                    Program.auditProxy.LogEvent((int)AuditEventTypes.BlacklistFileChanged, username);
                 }
             }
             return blackListUpddate;

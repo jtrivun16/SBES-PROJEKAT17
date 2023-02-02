@@ -107,7 +107,7 @@ namespace ServiceManager
         }
 
 
-        public static bool UpdateBlackList(string input)
+        public static bool UpdateBlackList()
         {
             lock (fileChecksum)                    // get hash stored in Data class, last valid hash
             {
@@ -124,9 +124,13 @@ namespace ServiceManager
 
                 if (write)
                 {
+                    System.IO.File.WriteAllText("blacklist.txt", string.Empty);
                     using (StreamWriter sw = new StreamWriter("blacklist.txt", true))
-                    {
-                        sw.WriteLine(input);
+                    {    
+                        foreach (string port in blackListPort)
+                            sw.Write($"port = {port}");
+                        foreach (string protocol in blackListProtocol)
+                            sw.Write($"protocol = {protocol}");
                     }
 
                     fileChecksum = BlackListChecksum();        // set hash to new value

@@ -209,7 +209,7 @@ namespace Client
         {
             Console.Write("Port to remove from blacklist:");
             string portToRemove = Console.ReadLine().Trim();
-            if (proxy.AddPortToBlackList(portToRemove))
+            if (proxy.RemovePortFromBlackList(portToRemove))
             {
                 Console.WriteLine($"Port: {portToRemove} is removed from blacklist successfyly.\n");
             }
@@ -224,7 +224,7 @@ namespace Client
         {
             Console.Write("Protocol to remove from blacklist:");
             string protocolToRemove = Console.ReadLine().Trim();
-            if (proxy.AddProtocolToBlackList(protocolToRemove))
+            if (proxy.RemoveProtocolFromBlackList(protocolToRemove))
             {
                 Console.WriteLine($"Protocol: {protocolToRemove} is removed from blacklist successfyly.\n");
             }

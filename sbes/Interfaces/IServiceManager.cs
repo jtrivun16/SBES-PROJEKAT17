@@ -23,8 +23,15 @@ namespace Interfaces
         [OperationContract]
         bool AddPortToBlackList(string value);
 
+
         [OperationContract]
         bool AddProtocolToBlackList(string value);
+
+        [OperationContract]
+        bool RemoveProtocolFromBlackList(string value);
+
+        [OperationContract]
+        bool RemovePortFromBlackList(string value);
 
         [OperationContract]
         void TestConnection();
