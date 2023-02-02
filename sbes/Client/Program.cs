@@ -70,10 +70,10 @@ namespace Client
                                     BanProtocol(proxy);
                                     break;
                                 case 5:
-                                    RemoveProtocolFromBL(proxy);
+                                    RemovePortFromBL(proxy);
                                     break;
                                 case 6:
-                                    RemovePortFromBL(proxy);
+                                    RemoveProtocolFromBL(proxy);
                                     break;
                                 //TODO 7
                                 default:
