@@ -22,8 +22,8 @@ namespace ServiceManager
         public static bool exitService = false;
         static void Main(string[] args)
         {
-            BlackListManager blacListManager = new BlackListManager();
-            blacListManager.IsBlackListCorrupted();
+            BlackListManager blackListManager = new BlackListManager();
+            blackListManager.IsBlackListCorrupted();
 
             auditProxy = ConnectAudit();
 
@@ -62,10 +62,12 @@ namespace ServiceManager
                 {
                     host.Close();
                     Console.WriteLine("Service shutdown...");
+                    //Environment.Exit(0);
                     break;
                 }
 
                 Thread.Sleep(1000);
+                
             }
             Console.ReadLine();
 
