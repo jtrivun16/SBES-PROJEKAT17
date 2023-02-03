@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Common;
+using SecurityManager;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,8 +14,12 @@ namespace ServiceManager
 {
     class BlackListManager
     {
-        public static List<string> blackListPort = null;
-        public static List<string> blackListProtocol = null;
+        //public static List<string> blackListPort = null;
+        //public static List<string> blackListProtocol = null;
+        
+        
+        public static List<BlackListItem> blackListPort;
+        public static List<BlackListItem> blackListProtocol;
         public static byte[] fileChecksum = null;
 
         public BlackListManager()
@@ -20,8 +27,8 @@ namespace ServiceManager
             if (!File.Exists("blacklist.txt"))
                 File.Create("blacklist.txt");
 
-            blackListPort = new List<string>();
-            blackListProtocol = new List<string>();
+            blackListPort = new List<BlackListItem>();
+            blackListProtocol = new List<BlackListItem>();
             fileChecksum = BlackListChecksum();
 
             ReadBlackListFile(); //load all data on start
@@ -37,16 +44,19 @@ namespace ServiceManager
                     string line = null;
                     while (!String.IsNullOrEmpty(line = sr.ReadLine()))
                     {
-                        string[] parts = line.Split('=');
-                        string key = parts[0];
-                        string value = parts[1];
+                        string[] parts = line.Split(',');
+                        string group = parts[0];
+                        string key = parts[1];
+                        string value = parts[2];
+
+                        
                         switch (key)
                         {
                             case "port":
-                                blackListPort.Add(value);
+                                blackListPort.Add(new BlackListItem(group,value));
                                 break;
                             case "protocol":
-                                blackListProtocol.Add(value);
+                                blackListProtocol.Add(new BlackListItem(group, value));
                                 break;
                         }
                     }
@@ -109,6 +119,7 @@ namespace ServiceManager
 
         public static bool UpdateBlackList()
         {
+
             lock (fileChecksum)                    // get hash stored in Data class, last valid hash
             {
                 byte[] tempHash = BlackListChecksum();      // get hash of current state of .txt file
@@ -127,10 +138,10 @@ namespace ServiceManager
                     System.IO.File.WriteAllText("blacklist.txt", string.Empty);
                     using (StreamWriter sw = new StreamWriter("blacklist.txt", true))
                     {    
-                        foreach (string port in blackListPort)
-                            sw.Write($"port = {port}");
-                        foreach (string protocol in blackListProtocol)
-                            sw.Write($"protocol = {protocol}");
+                        foreach (var item in blackListPort)
+                            sw.Write($"{item.Group},port,{item.Value}" + Environment.NewLine);
+                        foreach (var item in blackListProtocol)
+                            sw.Write($"{item.Group},protocol,{item.Value}" + Environment.NewLine);
                     }
 
                     fileChecksum = BlackListChecksum();        // set hash to new value
@@ -143,10 +154,50 @@ namespace ServiceManager
 
         public static bool ItemIsOnBlacklist(string port, string protocol)
         {
-            if (blackListPort.Contains(port) || blackListProtocol.Contains(protocol))
-                return true;
+            string[] groups = GetUserGroups();
+
+            foreach(string group in groups)
+            {
+                for(int i=0; i<blackListPort.Count; i++)
+                {           
+                    if (blackListPort[i].Group == group && blackListPort[i].Value == port)
+                        return true; 
+                }
+
+
+                for(int i = 0; i < blackListProtocol.Count; i++)
+                {
+                    if (blackListProtocol[i].Group == group && blackListProtocol[i].Value == protocol)
+                        return true;
+                }
+            }
 
             return false;
+        }
+
+
+        public static string[] GetUserGroups()
+        {
+            string[] groups = { string.Empty };
+
+            WindowsIdentity windowsIdentity = (Thread.CurrentPrincipal.Identity as IIdentity) as WindowsIdentity;
+            foreach (IdentityReference item in windowsIdentity.Groups)
+            {
+                //Trazimo SID koji je u jednom zapisu, konvertujemo ga u citljivi sid
+                // group Name i trazimo permisije za njega 
+                SecurityIdentifier sid = (SecurityIdentifier)item.Translate(typeof(SecurityIdentifier));
+                var name = sid.Translate(typeof(NTAccount));
+              
+
+                string groupName = Formatter.ParseName(name.ToString());
+                if (RolesConfig.GetPermissions(groupName, out string[] permissions))
+                {
+                    groups[groups.Count() - 1] = groupName;
+                }
+
+            }
+
+            return groups;
         }
     }
 }

@@ -178,8 +178,9 @@ namespace Client
         {
             Console.Write("Port to ban:");
             string portBan = Console.ReadLine().Trim();
-
-            if (proxy.AddPortToBlackList(portBan))
+            Console.Write("Group: ");
+            string group = Console.ReadLine().Trim();
+            if (proxy.AddPortToBlackList(portBan, group))
             {
                 Console.WriteLine($"Port: {portBan} is banned successfyly.\n");
             }
@@ -194,7 +195,9 @@ namespace Client
         {
             Console.Write("Protocol to ban:");
             string protocolBan = Console.ReadLine().Trim();
-            if (proxy.AddProtocolToBlackList(protocolBan))
+            Console.Write("Group: ");
+            string group = Console.ReadLine().Trim();
+            if (proxy.AddProtocolToBlackList(protocolBan,group))
             {
                 Console.WriteLine($"Protocol: {protocolBan} is banned successfyly.\n");
             }
@@ -209,7 +212,9 @@ namespace Client
         {
             Console.Write("Port to remove from blacklist:");
             string portToRemove = Console.ReadLine().Trim();
-            if (proxy.RemovePortFromBlackList(portToRemove))
+            Console.Write("Group: ");
+            string group = Console.ReadLine().Trim();
+            if (proxy.RemovePortFromBlackList(portToRemove, group))
             {
                 Console.WriteLine($"Port: {portToRemove} is removed from blacklist successfyly.\n");
             }
@@ -224,7 +229,9 @@ namespace Client
         {
             Console.Write("Protocol to remove from blacklist:");
             string protocolToRemove = Console.ReadLine().Trim();
-            if (proxy.RemoveProtocolFromBlackList(protocolToRemove))
+            Console.Write("Group: ");
+            string group = Console.ReadLine().Trim();
+            if (proxy.RemoveProtocolFromBlackList(protocolToRemove, group))
             {
                 Console.WriteLine($"Protocol: {protocolToRemove} is removed from blacklist successfyly.\n");
             }

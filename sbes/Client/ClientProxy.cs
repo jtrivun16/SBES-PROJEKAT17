@@ -65,11 +65,11 @@ namespace Client
             }
         }
 
-        public bool AddPortToBlackList(string value)
+        public bool AddPortToBlackList(string value, string group)
         {
             try
             {
-                return factory.AddPortToBlackList(value);
+                return factory.AddPortToBlackList(value, group);
             }
             catch (Exception e)
             {
@@ -78,11 +78,11 @@ namespace Client
             }
         }
 
-        public bool AddProtocolToBlackList(string value)
+        public bool AddProtocolToBlackList(string value, string group)
         {
             try
             {
-                return factory.AddProtocolToBlackList(value);
+                return factory.AddProtocolToBlackList(value, group);
             }
             catch (Exception e)
             {
@@ -91,11 +91,11 @@ namespace Client
             }
         }
 
-        public bool RemoveProtocolFromBlackList(string value)
+        public bool RemoveProtocolFromBlackList(string value, string group)
         {
             try
             {
-                return factory.RemoveProtocolFromBlackList(value);
+                return factory.RemoveProtocolFromBlackList(value, group);
             }
             catch (Exception e)
             {
@@ -104,11 +104,11 @@ namespace Client
             }
         }
 
-        public bool RemovePortFromBlackList(string value)
+        public bool RemovePortFromBlackList(string value, string group)
         {
             try
             {
-                return factory.RemovePortFromBlackList(value);
+                return factory.RemovePortFromBlackList(value, group);
             }
             catch (Exception e)
             {

@@ -21,17 +21,17 @@ namespace Interfaces
         bool StopService(byte[] ip, byte[] port, byte[] protocol);
 
         [OperationContract]
-        bool AddPortToBlackList(string value);
+        bool AddPortToBlackList(string value, string group);
 
 
         [OperationContract]
-        bool AddProtocolToBlackList(string value);
+        bool AddProtocolToBlackList(string value, string group);
 
         [OperationContract]
-        bool RemoveProtocolFromBlackList(string value);
+        bool RemoveProtocolFromBlackList(string value, string group);
 
         [OperationContract]
-        bool RemovePortFromBlackList(string value);
+        bool RemovePortFromBlackList(string value, string group);
 
         [OperationContract]
         void TestConnection();
