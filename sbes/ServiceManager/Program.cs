@@ -26,6 +26,7 @@ namespace ServiceManager
             blackListManager.IsBlackListCorrupted();
 
             auditProxy = ConnectAudit();
+            auditProxy.DoSTrackerDetection();
 
             NetTcpBinding binding = new NetTcpBinding();
             string address = "net.tcp://localhost:8888/WCFService";
@@ -62,7 +63,7 @@ namespace ServiceManager
                 {
                     host.Close();
                     Console.WriteLine("Service shutdown...");
-                    //Environment.Exit(0);
+                    Environment.Exit(0);
                     break;
                 }
 

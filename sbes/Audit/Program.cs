@@ -46,7 +46,7 @@ namespace Audit
 
 			host.Description.Behaviors.Remove<ServiceSecurityAuditBehavior>();
 			host.Description.Behaviors.Add(newAudit);
-
+			
 
 			try
 			{
