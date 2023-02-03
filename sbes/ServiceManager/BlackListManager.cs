@@ -128,9 +128,9 @@ namespace ServiceManager
                     using (StreamWriter sw = new StreamWriter("blacklist.txt", true))
                     {    
                         foreach (string port in blackListPort)
-                            sw.Write($"port = {port}");
+                            sw.Write($" port = {port}");
                         foreach (string protocol in blackListProtocol)
-                            sw.Write($"protocol = {protocol}");
+                            sw.Write($" protocol = {protocol}");
                     }
 
                     fileChecksum = BlackListChecksum();        // set hash to new value

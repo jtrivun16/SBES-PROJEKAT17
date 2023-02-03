@@ -27,23 +27,23 @@ namespace ServiceManager
 
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
-        public bool AddPortToBlackList( string value)
+        public bool AddPortToBlackList(string value)
         {
             WindowsIdentity windowsIdentity = Thread.CurrentPrincipal.Identity as WindowsIdentity;
             string username = Formatter.ParseName(windowsIdentity.Name);
 
-            bool blackListUpddate = false;
+            bool blackListUpdate = false;
             if (!BlackListManager.blackListPort.Contains(value))
             {
                 BlackListManager.blackListPort.Add(value);
-                blackListUpddate = BlackListManager.UpdateBlackList();
+                blackListUpdate = BlackListManager.UpdateBlackList();
 
-                if (blackListUpddate)
+                if (blackListUpdate)
                 {
                     Console.WriteLine("Port :" + value + " is banned");
                 }
             }
-            return blackListUpddate;
+            return blackListUpdate;
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]

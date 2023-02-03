@@ -62,7 +62,6 @@ namespace Client
                                 case 2:
                                     StopService(proxy, clientDiffieHellman);
                                     break;
-
                                 case 3:
                                     BanPort(proxy);
                                     break;
@@ -181,7 +180,7 @@ namespace Client
 
             if (proxy.AddPortToBlackList(portBan))
             {
-                Console.WriteLine($"Port: {portBan} is banned successfyly.\n");
+                Console.WriteLine($"Port: {portBan} is banned successfully.\n");
             }
             else
             {
@@ -196,7 +195,7 @@ namespace Client
             string protocolBan = Console.ReadLine().Trim();
             if (proxy.AddProtocolToBlackList(protocolBan))
             {
-                Console.WriteLine($"Protocol: {protocolBan} is banned successfyly.\n");
+                Console.WriteLine($"Protocol: {protocolBan} is banned successfully.\n");
             }
             else
             {
@@ -211,7 +210,7 @@ namespace Client
             string portToRemove = Console.ReadLine().Trim();
             if (proxy.RemovePortFromBlackList(portToRemove))
             {
-                Console.WriteLine($"Port: {portToRemove} is removed from blacklist successfyly.\n");
+                Console.WriteLine($"Port: {portToRemove} is removed from blacklist successfully.\n");
             }
             else
             {
@@ -226,7 +225,7 @@ namespace Client
             string protocolToRemove = Console.ReadLine().Trim();
             if (proxy.RemoveProtocolFromBlackList(protocolToRemove))
             {
-                Console.WriteLine($"Protocol: {protocolToRemove} is removed from blacklist successfyly.\n");
+                Console.WriteLine($"Protocol: {protocolToRemove} is removed from blacklist successfully.\n");
             }
             else
             {
