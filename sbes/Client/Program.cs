@@ -33,23 +33,23 @@ namespace Client
             bool connected = false;
 
             string opcija = "";
-         
+
             Console.WriteLine("============ MENU ============");
             Console.WriteLine("[ 1 ] Connect");
             Console.Write("Unesite da ako zelite da se konektujete: ");
             opcija = Console.ReadLine();
             opcija = opcija.ToLower();
 
-            if (opcija == "da") 
+            if (opcija == "da")
             {
                 using (ClientProxy proxy = new ClientProxy(binding, endpointAddress))
                 {
 
                     //connect
                     ExcangeKey clientDiffieHellman = new ExcangeKey();
-                   
 
-                    if(Connect(clientDiffieHellman, proxy))
+
+                    if (Connect(clientDiffieHellman, proxy))
                     {
                         connected = true;
                         while (true)
@@ -75,12 +75,15 @@ namespace Client
                                     RemoveProtocolFromBL(proxy);
                                     break;
                                 //TODO 7
+                                case 7:
+                                    DosTest(proxy, clientDiffieHellman);
+                                    break;
                                 default:
                                     break;
                             }
                         }
                         Console.ReadLine();
-                    }     
+                    }
                 }
             }
             else
@@ -113,7 +116,7 @@ namespace Client
             return option;
         }
 
-        public static bool Connect(ExcangeKey clientDiffieHellman,ClientProxy proxy)
+        public static bool Connect(ExcangeKey clientDiffieHellman, ClientProxy proxy)
         {
             serverPublicKey = proxy.Connect(clientDiffieHellman.PublicKey, clientDiffieHellman.IV);
 
@@ -240,7 +243,29 @@ namespace Client
             }
         }
 
+        public static void DosTest(ClientProxy proxy, ExcangeKey clientDiffieHellman)
+        {
+            for (int i = 0; i < 4; i++) 
+            { 
+                string ip = "localhost";
+                string port = "5000";
+                string protocol = "tcp";
 
+                bool validRun = proxy.RunService(clientDiffieHellman.Encrypt(serverPublicKey, ip),
+                                    clientDiffieHellman.Encrypt(serverPublicKey, port),
+                                    clientDiffieHellman.Encrypt(serverPublicKey, protocol));
+
+                if (validRun)
+                {
+                    Console.WriteLine("[ CLIENT ] [ DOSTEST ] Service runned successfully!\n");
+                }
+                else
+                {
+                    Console.WriteLine("[ CLIENT ] [ DOSTEST ] Service run falied!\n");
+                }
+
+            };
+        }
 
 
     }

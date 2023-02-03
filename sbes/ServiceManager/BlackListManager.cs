@@ -1,4 +1,4 @@
-﻿using Common;
+using Common;
 using SecurityManager;
 using System;
 using System.Collections.Generic;
@@ -90,9 +90,10 @@ namespace ServiceManager
 
         public void IsBlackListCorrupted()
         {
+            int flag = 0;
             var thread = new Thread(() =>
             {
-                while (true)
+                while (flag != 2)
                 {
                     Thread.Sleep(5000);
                     lock (fileChecksum)
@@ -104,12 +105,14 @@ namespace ServiceManager
                             {
                                 Program.auditProxy.LogEvent((int)Audit.AuditEventTypes.BlacklistFileChanged, " ");
                                 Console.WriteLine("Unauthorised blacklist file corrupted!!!");
+                                CleanBLFile();
                                 Program.exitService = true;  //U slučaju da je integritet narušen, SM prijavljuje događaj Audit komponenti i nakon toga se zaustavlja.
-
+                                flag = 2;
                                 break;
                             }
                         }
                     }
+                    
                 }
             });
 
@@ -199,5 +202,11 @@ namespace ServiceManager
 
             return groups;
         }
+        public static void CleanBLFile()
+        {
+            System.IO.File.WriteAllText("blacklist.txt", string.Empty);
+            fileChecksum = BlackListChecksum();
+        }
+
     }
 }
