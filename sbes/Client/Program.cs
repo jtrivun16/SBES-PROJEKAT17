@@ -30,8 +30,6 @@ namespace Client
 
             EndpointAddress endpointAddress = new EndpointAddress(new Uri(address), EndpointIdentity.CreateUpnIdentity("wcfServer"));
 
-            bool connected = false;
-
             string opcija = "";
 
             Console.WriteLine("============ MENU ============");
@@ -51,7 +49,6 @@ namespace Client
 
                     if (Connect(clientDiffieHellman, proxy))
                     {
-                        connected = true;
                         while (true)
                         {
                             switch (Izbor())

@@ -38,19 +38,6 @@ namespace SecurityManager
                 return false;
             }
 
-
-            //TODO
-            //WindowsIdentity windowsIdentity = identities[0] as WindowsIdentity;
-
-            //try
-            //{
-            //    AuditClient.Instance().LogAuthenticationSuccess(Formatter.ParseName(windowsIdentity.Name));
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //}
-
             //if everthing is okey create new item in dictionary which will be our custom principal
             evaluationContext.Properties["Principal"] =
                 new CustomPrincipal((WindowsIdentity)identities[0]);

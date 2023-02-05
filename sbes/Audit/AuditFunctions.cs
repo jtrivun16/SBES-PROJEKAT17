@@ -120,7 +120,7 @@ namespace Audit
                     try
                     {
                         LogEventTypes.StopServiceSuccess(username);
-                        message = $"[ EVENT LOG ] [ FAILURE ] User \'{username}\' successfully stopped service.";
+                        message = $"[ EVENT LOG ] [ SUCCESS ] User \'{username}\' successfully stopped service.";
                     }
                     catch (Exception e)
                     {

@@ -157,7 +157,7 @@ namespace ServiceManager
 
         public static bool ItemIsOnBlacklist(string port, string protocol)
         {
-            string[] groups = GetUserGroups();
+            List<string> groups = GetUserGroups();
 
             foreach(string group in groups)
             {
@@ -179,9 +179,9 @@ namespace ServiceManager
         }
 
 
-        public static string[] GetUserGroups()
+        public static List<string> GetUserGroups()
         {
-            string[] groups = { string.Empty };
+            List<string> groups = new List<string>();
 
             WindowsIdentity windowsIdentity = (Thread.CurrentPrincipal.Identity as IIdentity) as WindowsIdentity;
             foreach (IdentityReference item in windowsIdentity.Groups)
@@ -195,7 +195,7 @@ namespace ServiceManager
                 string groupName = Formatter.ParseName(name.ToString());
                 if (RolesConfig.GetPermissions(groupName, out string[] permissions))
                 {
-                    groups[groups.Count() - 1] = groupName;
+                    groups.Add(groupName);
                 }
 
             }

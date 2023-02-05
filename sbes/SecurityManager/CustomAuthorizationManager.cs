@@ -15,13 +15,6 @@ namespace SecurityManager
 
             bool isInRole = principal.IsInRole("ExchangeSessionKey");
 
-            //TODO
-
-            if (!isInRole)
-            {
-               
-            }
-
             return isInRole;
         }
     }

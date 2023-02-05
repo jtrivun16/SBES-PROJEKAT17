@@ -18,11 +18,6 @@ namespace Client
             factory = this.CreateChannel();
         }
 
-        public void AddItemToBlackList(string type, string value)
-        {
-            throw new NotImplementedException();
-        }
-
         public byte[] Connect(byte[] publicKey, byte[] iv)
         {
             byte[] serverPublicKey = null;
