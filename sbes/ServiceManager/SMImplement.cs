@@ -155,22 +155,20 @@ namespace ServiceManager
             string decryptedIp = excangeKey.Decrypt(ClientPublicKey, ip, ClientIV);
             string decryptedPort = excangeKey.Decrypt(ClientPublicKey, port, ClientIV);
             string decryptedProtocol = excangeKey.Decrypt(ClientPublicKey, protocol, ClientIV);
-
+            string protocol2 = decryptedProtocol.ToLower();
             if (decryptedProtocol.ToLower().Equals("tcp"))
                 decryptedProtocol = "net.tcp";
-            else
-                return false;
 
             if (decryptedIp.ToLower().Equals("localhost"))
                 decryptedIp = "127.0.0.1";
 
             NetTcpBinding binding = new NetTcpBinding();
-            string address = $"{decryptedProtocol}://{decryptedIp}:{decryptedPort}/SMImplement";
+            string address = $"net.tcp://{decryptedIp}:{decryptedPort}/SMImplement";
 
             //get group of client
           
 
-            if (hosts.ContainsKey(address) || BlackListManager.ItemIsOnBlacklist(decryptedPort, decryptedProtocol))
+            if (hosts.ContainsKey(address) || BlackListManager.ItemIsOnBlacklist(decryptedPort, protocol2))
             {
                 Program.auditProxy.LogEvent((int)AuditEventTypes.RunServiceFailure, username);
                 Console.WriteLine("Service faild to run ...");

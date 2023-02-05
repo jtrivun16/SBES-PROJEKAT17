@@ -100,10 +100,6 @@ namespace Audit
 		}
 
 
-
-
-
-
 		public static void DoSAttackDetected(string username)
 		{
 			if (customLog != null)

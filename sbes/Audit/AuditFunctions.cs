@@ -37,6 +37,7 @@ namespace Audit
 
                                 if ((dosTracker.ElementAt(i)).Value > allowedNumberOfDosAttacks)
                                 {
+                                    
                                     LogEventTypes.DoSAttackDetected(user);
                                     message = $"[ EVENT LOG ] [ INFO ] DoS attack detected by user \'{user}\'.";
                                     dosTracker[user] = 0;

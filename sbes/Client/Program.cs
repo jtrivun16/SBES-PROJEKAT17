@@ -175,9 +175,9 @@ namespace Client
 
         public static void BanPort(ClientProxy proxy)
         {
-            Console.Write("Port to ban:");
+            Console.WriteLine("Port to ban:");
             string portBan = Console.ReadLine().Trim();
-            Console.Write("Group: ");
+            Console.WriteLine("Group: ");
             string group = Console.ReadLine().Trim();
             if (proxy.AddPortToBlackList(portBan, group))
             {
@@ -192,9 +192,9 @@ namespace Client
 
         public static void BanProtocol(ClientProxy proxy)
         {
-            Console.Write("Protocol to ban:");
+            Console.WriteLine("Protocol to ban:");
             string protocolBan = Console.ReadLine().Trim();
-            Console.Write("Group: ");
+            Console.WriteLine("Group: ");
             string group = Console.ReadLine().Trim();
             if (proxy.AddProtocolToBlackList(protocolBan,group))
             {
